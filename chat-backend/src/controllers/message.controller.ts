@@ -36,7 +36,9 @@ export const searchMessages = async (
     if (minLength) filter.contentLength = { $gte: parseInt(minLength as string) };
     if (maxLength) filter.contentLength = { ...filter.contentLength, $lte: parseInt(maxLength as string) };
     if (containsLinks === 'true') filter.content = { $regex: /https?:\/\/[^\s]+/ };
-    if (isRead) filter.readBy = isRead === 'true' ? { $in: [req.user!._id] } : { $nin: [req.user!._id] };
+    if (isRead && req.user) {
+      filter.readBy = isRead === 'true' ? { $in: [req.user._id] } : { $nin: [req.user._id] };
+    }
 
     // Fetch messages
     const messages = await Message.find(filter)
