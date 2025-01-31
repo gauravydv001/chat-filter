@@ -4,6 +4,9 @@ import authMiddleware from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-router.get('/search', authMiddleware, searchMessages);
+// Use the authMiddleware and searchMessages controller
+router.get('/search', authMiddleware, (req, res, next) => {
+  searchMessages(req, res, next).catch(next); // Ensure errors are passed to the error handler
+});
 
 export default router;
