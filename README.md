@@ -21,7 +21,7 @@ Chat Filter is a real-time chat filtering application built using Express.js and
 ### 1. Clone the Repository
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/chat-filter.git
+git clone https://github.com/gauravydv001/chat-filter.git
 cd chat-filter
 ```
 ###Install Dependencies
